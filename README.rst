@@ -1,7 +1,7 @@
 #########################
 Mutants Browser DashBoard
 #########################
-of the `Plant Breeding and Genetics Laboratory, FAO/IAEA Joint Division <http://www-naweb.iaea.org/nafa/pbg/index.html>`_. The online version can be accessed by clicking on the following `Read-the-Docs Mutant Browser DashBoard webiste <https://dashboard-prototype.readthedocs.io/en/latest/>_` or copy-pasting the following link: https://dashboard-prototype.readthedocs.io/en/latest/. 
+of the `Plant Breeding and Genetics Laboratory, FAO/IAEA Joint Division <http://www-naweb.iaea.org/nafa/pbg/index.html>`_. The online version can be accessed by clicking on the following `Read-the-Docs Mutant Browser DashBoard webiste <https://dashboard-prototype.readthedocs.io/en/latest/>`_ or copy-pasting the following link: https://dashboard-prototype.readthedocs.io/en/latest/. 
 
 
 .. image:: https://img.shields.io/badge/python-3.5-blue
