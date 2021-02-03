@@ -27,6 +27,9 @@ release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 
+# install the needed theme with:
+import sphinx_rtd_theme
+
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
@@ -53,47 +56,53 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
 
-import sphinx_rtd_theme
-
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
-html_add_permalinks = ''
+pygments_style = 'sphinx'
 master_doc = 'index'
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = []
+html_theme = "sphinx_rtd_theme"
+html_add_permalinks = ""
+
+html_theme_options = {
+    'sticky_navigation': True,
+    'collapse_navigation': False,
+}
+
+
+# -- Options for LaTeX output ---------------------------------------------
+
+latex_engine = 'pdflatex'
+latex_theme = 'howto'
+latex_toplevel_sectioning = 'part'
+
 
 # Configuration of Title Page
 latex_maketitle = r'''
-        \pagenumbering{Roman} %%% to avoid page 1 conflict with actual page
+        \pagenumbering{Roman} %%% to avoid page 1 conflict with actual page 
         \begin{titlepage}
-            \vspace*{10mm} %%% * is used to give space from top, Title
-            \flushright\textbf{\Huge {Creating a ReadtheDocs Documentation v1.0}}
-            \vspace{0mm} %%% Sub-Title
-            \textbf{\Large {A Step-by-Step Guide}}
-            \vspace{50mm} % Author name
-            \textbf{\Large {Anibal E. Morales}}
-            \vspace{10mm} % Organization Name
+            \vspace*{10mm} %%% * is used to give space from top
+            \flushright\textbf{\Huge {Dashboard Prototype Documentation}}
+            \vspace{0mm} %%% * is used to give space from top
+            \textbf{\huge {A Step-by-Step Tutorial - V1.0}}
+            \vspace{50mm}
+            \textbf{\Large {Norman Warthmann, Anibal Morales}}
+            \vspace{10mm}
             \textbf{\Large {Plant Breeding and Genetics Laboratory}}
-            \vspace{0mm} % Division/Department
-            \textbf{\Large {FAO/IAEA Joint Division}}
-            \vspace{0mm} % City, Country
+            \vspace{0mm}
             \textbf{\Large {Seibersdorf, Austria}}
-            \vspace{10mm} % Creation Date
-            \normalsize Created: February, 2021
-            \vspace*{0mm} % Last updated Date
-            \normalsize  Last updated: 
-            %% \vfill adds at the bottom a note or caution
+	    \vspace{10mm}
+            \normalsize Created on : July 2020
+            \vspace*{0mm}
+            \normalsize  Last updated : February 2021
+            %% \vfill adds at the bottom
             \vfill
-            \small\flushleft {{\textbf {Please note:}} \textit {This is an important note at the bottom of the title page.}}
+            \small\flushleft {{\textbf {Please note:}} \textit {This is not an official IAEA publication but is made available as working material. The material has not undergone an official review by the IAEA. The views
+expressed do not necessarily reflect those of the International Atomic Energy Agency or its Member States and remain the responsibility of the contributors. The use of particular designations of countries or territories does not imply any judgement by the publisher, the IAEA, as to the legal status of such countries or territories, of their authorities and institutions or of the delimitation of their boundaries. The mention of names of specific companies or products (whether or not indicated as registered) does not imply any intention to infringe proprietary rights, nor should it be construed as an endorsement or recommendation on the part of the IAEA.}}
         \end{titlepage}
         \pagenumbering{arabic}
-        \newcommand{\sectionbreak}{\clearpage}
 '''
 latex_elements = {
-   'releasename': 'Version 1.2',
+   'releasename': 'Version 1.0',
    'maketitle': latex_maketitle,
 }

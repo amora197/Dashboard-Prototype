@@ -105,7 +105,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#using-the-dashboard">Using the DashBoard</a><ul>
-<li><a class="reference internal" href="#search-filter-and-sort">Search, filter, and sort</a></li>
+<li><a class="reference internal" href="#variant-search-parameters">Variant Search Parameters</a></li>
+<li><a class="reference internal" href="#variant-filter">Variant Filter</a></li>
+<li><a class="reference internal" href="#passport-filter">Passport Filter</a></li>
+<li><a class="reference internal" href="#noise-removal">Noise Removal</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 </ul>
 </li>
@@ -181,7 +184,7 @@
             
   <div class="section" id="mutants-browser-dashboard">
 <h1>Mutants Browser DashBoard</h1>
-<p>of the <a class="reference external" href="http://www-naweb.iaea.org/nafa/pbg/index.html">Plant Breeding and Genetics Laboratory, FAO/IAEA Joint Division</a></p>
+<p>of the <a class="reference external" href="http://www-naweb.iaea.org/nafa/pbg/index.html">Plant Breeding and Genetics Laboratory, FAO/IAEA Joint Division</a>.</p>
 <a class="reference external image-reference" href="https://www.python.org"><img alt="https://img.shields.io/badge/python-3.5-blue" src="https://img.shields.io/badge/python-3.5-blue" /></a>
 <a class="reference external image-reference" href="https://bioconda.github.io/"><img alt="https://img.shields.io/badge/Bioconda-up%20todate-brightgreen" src="https://img.shields.io/badge/Bioconda-up%20todate-brightgreen" /></a>
 <a class="reference external image-reference" href="http://snpeff.sourceforge.net/"><img alt="https://img.shields.io/badge/SnpSift-4.3.1t-blue" src="https://img.shields.io/badge/SnpSift-4.3.1t-blue" /></a>
@@ -406,17 +409,58 @@ The “Contig” column must remain unchanged, however, the user has the option 
 </div>
 <div class="section" id="using-the-dashboard">
 <h2>Using the DashBoard</h2>
-<div class="section" id="search-filter-and-sort">
-<h3>Search, filter, and sort</h3>
-<p>Starting point is either a gene name, a chromsome/position, or a chromosome/position range. Select the appropriate tab, enter the desired values and click “SEARCH”.
-If desired, the results can already be filtered at the start. Reasonable defaults are preselected.
-The results will appear as a table and can be further sorted (by clicking on the arrows in the header line) or sub-selected (by entering the respective value in the 2nd line and hitting enter).
-If nothing is found, a respective message is displayed. If no such message is displayed, yet no table is shown, do not hesitate to hit “Search” again.</p>
-<a class="reference internal image-reference" href="images/Dashboard_example_coffee.png"><img alt="You should see a screenshot of the Dashboard" src="images/Dashboard_example_coffee.png" style="width: 600px;" /></a>
-<p>Click on the image to enlarge! (It will open in new window.)</p>
+<div class="section" id="variant-search-parameters">
+<h3>Variant Search Parameters</h3>
+<p>The starting point is either a gene name, a chromsome/position, or a chromosome/position range. This can be done by selecting the appropriate tab under <strong>Variant Search Parameters</strong> on the left panel. There are 3 tabs to choose from: <strong>Gene Identifier</strong>, <strong>Range</strong>, and <strong>Position</strong>. The first tab <strong>Gene Identifier</strong>  gives the option of typing the <strong>Gene Name</strong> and the <strong>Max Distance from Gene</strong> in basepairs (bp).</p>
+<img alt="gene-identifier-tab" class="align-center" src="_images/gene_identifier.png" />
+<p>The second tab <strong>Range</strong> provides the options of specifying the <strong>Chromosome Name</strong> and the <strong>Start</strong>/<strong>End</strong> positions of the chromosome.</p>
+<img alt="range-tab" class="align-center" src="_images/range.png" />
+<p>The third tab <strong>Position</strong> provides the option to specify the <strong>Chromosome name</strong> and the <strong>Position</strong> (base-pair number) in the chromosome.</p>
+<img alt="position-tab" class="align-center" src="_images/position.png" />
+</div>
+<div class="section" id="variant-filter">
+<h3>Variant Filter</h3>
+<p>After inputting the <strong>Variant Search Parameters</strong> of choice, one can specify the type of variant filter under the <strong>Variant Filter</strong> section of the left panel, which contains 3 tabs: <strong>Variant Type</strong>, <strong>Impact Type</strong>, and <strong>Effect Type</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All of the options in each tab under the <strong>Variant Filter</strong> and <strong>Passport Filter</strong> sections are extracted from the VCF file; i.e. the options are not hard-coded, rather dependent on the information present in the VCF file being analyzed.</p>
+<p>The front-end/back-end developer should pay attention to and understand this information to avoid incorrect/erroneous results.</p>
+</div>
+<p>The first tab <strong>Variant Type</strong> gives the option of including different type of mutations in the search results. These include: complex mutations (complex), single-nucleotide polymorphisms (snp), multi-nucleotide polymorphisms (mnp), deletions (del), and insertions (ins). The available mutations may vary depending on the mutations present in the VCF file.</p>
+<img alt="variant-type" class="align-center" src="_images/variant_type.png" />
+<p>The second tab <strong>Impact Type</strong> gives the option of including different types of impacts, such as: moderate, modifier, low, or high. More or less options might appear, depending on the information the software extracts from the VCF file, as mentioned in the <strong>Warning</strong> message above.</p>
+<img alt="impact-type" class="align-center" src="_images/impact_type.png" />
+<p>The third tab <strong>Effect Type</strong> provides different options, depending on the information present in the VCF file. One can choose the effect type by clicking on the arrow found on the right of the search bar and then scrolling down to choose from the options provided.</p>
+<img alt="effect-type" class="align-center" src="_images/effect_type.png" />
+</div>
+<div class="section" id="passport-filter">
+<h3>Passport Filter</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The same situation from the <strong>Warning</strong> message above applies here. The options under each tab will depend on the information present in the VCF file. These options are not hard-coded.</p>
+</div>
+<p>The options under the <strong>Passport Filter</strong> depend on the user-input in the <strong>passport.csv</strong> file, which specifies multiple fields: Sample-ID, Plant-ID, Branch-ID, Variety, Generation, Treatment, and Dose. This file is used to when running the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">mutants_dashboard.py</span></code> command in a computer terminal. Using coffee as an example, the <strong>passport.csv</strong> file can be filled as shown below.</p>
+<img alt="passport-file" class="align-center" src="_images/passport_file.png" />
+<p>Using coffee as an example, the available fields in the first tab <strong>Variety</strong> provides the option to include specific verieties of coffee in the search results. The varieties available will depend on the user’s input of the <strong>passport.csv</strong> file.</p>
+<img alt="variety-coffee" class="align-center" src="_images/variety.png" />
+<p>The second tab <strong>Generation</strong> will also depend on the user’s input in the <strong>passport.csv</strong> file. For the present example, only an M0 generation is present.</p>
+<img alt="generation-m0" class="align-center" src="_images/generation.png" />
+</div>
+<div class="section" id="noise-removal">
+<h3>Noise Removal</h3>
+<p>The section <strong>Noise Removal</strong> provides multiple options to further filter out or leave in noise. The first option <strong>Samples with REF Allele (00)</strong> gives the option to leave or filter out those genotypes that are similar to the reference allele of a reference genome. This means that no mutation occurred, so it should not be included as a variant. The second option <strong>Samples with Missing Data (.)</strong> pretty much is self-explanatory. Those fields with missing data are identified by a <code class="docutils literal notranslate"><span class="pre">.</span></code> in the VCF file. The third option <strong>Multi Allelic Variants</strong> lets the user include those alleles with more than one mutations. This can include mutated genotypes, such as 0/2, 1/2, 0/3, etc.</p>
+<img alt="noise-removal" class="align-center" src="_images/noise_removal.png" />
 </div>
 <div class="section" id="result-columns">
 <h3>Result Columns</h3>
+<p>If desired, the results can already be filtered at the start. Reasonable defaults are preselected. If nothing is found, a respective message is displayed. If no such message is displayed, yet no table is shown, do not hesitate to hit the <strong>SEARCH</strong> button on the bottom of the left panel again.</p>
+<img alt="search-button" class="align-center" src="_images/search.png" />
+<p>The results will appear as a table.</p>
+<a class="reference internal image-reference" href="_images/dashboard_coffee_example.png"><img alt="dashboard-example" class="align-center" src="_images/dashboard_coffee_example.png" style="width: 600px;" /></a>
+<p>The results can be further sorted (by clicking on the arrows in the header line) or sub-selected (by entering the respective value in the 2nd line and hitting enter).</p>
+<a class="reference internal image-reference" href="_images/filter_data.png"><img alt="filter-data-table" class="align-center" src="_images/filter_data.png" style="width: 600px;" /></a>
+<p>As an example, from the above results, one can choose the “1/1” genotype of sample 1-C7 under the <strong>GT ** and **Sample-ID</strong> column headers by typing the corresponding information on the second row under each column header and then pressing “Enter”. The results should only show those genes of sample 1-C7 with 1/1 genotype.</p>
+<a class="reference internal image-reference" href="_images/gt-1-1.png"><img alt="gt-1-1" class="align-center" src="_images/gt-1-1.png" style="width: 600px;" /></a>
 <p>Most columns are self-explanatory. <strong>Sample</strong> refers to the sample name in the input vcf/bcf file. The additional information on the sample is drawn from the passport.tab file that the user can customise.
 The alleles are given as <strong>REF</strong> and <strong>ALT</strong>, denoting reference and alternative alleles (= variant/mutation).
 Genotypes are 0/0 for homozygous reference, 1/1 for homozygous variant, and 0/1 for hetero-/hemi-zygous.
@@ -428,7 +472,7 @@ Additional allele classes are possible for multi-allelic variants, denoting the 
 <div class="section" id="copyright-information">
 <h2>Copyright information</h2>
 <p>This Dashboard was developed by Anza Ghaffar and Norman Warthmann,
-© 2020 <a class="reference external" href="http://www-naweb.iaea.org/nafa/pbg/index.html">Plant Breeding and Genetics Laboratory of the FAO/IAEA Joint Division</a>.
+© 2020 <a class="reference external" href="http://www-naweb.iaea.org/nafa/pbg/index.html">Plant Breeding and Genetics Laboratory of the FAO/IAEA Joint Division</a>. Documentation was last updated in February 2021 by Anibal Morales, Plant Breeding and Genetics Laboratory of the FAO/IAEA Joint Division.
 If you find this DashBoard useful and want to use in in your own research, please get in touch by emailing
 <a class="reference external" href="mailto:n&#46;warthmann&#37;&#52;&#48;iaea&#46;org">n<span>&#46;</span>warthmann<span>&#64;</span>iaea<span>&#46;</span>org</a>. We are happy to provide an annotated (SnpEff) vcf/bcf file to help you get started.</p>
 </div>
